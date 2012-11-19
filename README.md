@@ -1,4 +1,4 @@
 pubmed-microdata
 ================
 
-Display HTML with microdata for a PubMed ID
+Display HTML with schema.org microdata for a PubMed ID
