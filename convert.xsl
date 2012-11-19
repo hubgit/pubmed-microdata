@@ -108,7 +108,6 @@
         <span class="label">
             <xsl:value-of select="."/>
         </span>
-        <xsl:text>:</xsl:text>
     </xsl:template>
 
     <xsl:template match="AbstractText">
