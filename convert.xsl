@@ -20,7 +20,7 @@
     		<xsl:apply-templates select="PubmedArticle/PubmedData/ArticleIdList/ArticleId"/>
 			</head>
     	<body>
-    		<article itemscope="itemscope" itemtype="http://schema.org/MedicalScholarlyArticle">
+    		<article itemscope="itemscope" itemtype="http://schema.org/medicalscholarlyarticle">
     			<header>
     				<xsl:apply-templates select="PubmedArticle/MedlineCitation/Article"/>
     			</header>
@@ -62,20 +62,22 @@
   </xsl:template>
 
   <xsl:template match="Author">
-    <li itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person" class="multiple">
-      <xsl:choose>
-        <xsl:when test="ForeName">
-          <xsl:apply-templates select="ForeName"/>
-        </xsl:when>
-        <xsl:when test="Initials">
-          <xsl:apply-templates select="Initials"/>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:apply-templates select="Name"/>
-        </xsl:otherwise>
-      </xsl:choose>
-      <xsl:text> </xsl:text>
-      <xsl:apply-templates select="LastName"/>
+    <li itemprop="author" itemscope="itemscope" itemtype="http://schema.org/person">
+      <span itemprop="name">
+        <xsl:choose>
+          <xsl:when test="ForeName">
+            <xsl:apply-templates select="ForeName"/>
+          </xsl:when>
+          <xsl:when test="Initials">
+            <xsl:apply-templates select="Initials"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:apply-templates select="Name"/>
+          </xsl:otherwise>
+        </xsl:choose>
+        <xsl:text> </xsl:text>
+        <xsl:apply-templates select="LastName"/>
+      </span>
     </li>
   </xsl:template>
 
@@ -92,7 +94,7 @@
   </xsl:template>
 
   <xsl:template match="Name">
-    <span itemprop="name"><xsl:value-of select="."/></span>
+    <xsl:value-of select="."/>
   </xsl:template>
 
   <xsl:template match="@Label" mode="abstract">
